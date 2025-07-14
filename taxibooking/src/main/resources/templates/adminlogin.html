@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxi Booking Admin Login</title>
+    <style>
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: #ffffff;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .login-box {
+          width: 100%;
+          max-width: 400px;
+          padding: 40px 30px;
+          border-radius: 12px;
+          background: #f9f9f9;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .login-box h2 {
+          text-align: center;
+          margin-bottom: 25px;
+          color: #222;
+        }
+
+        .message {
+          background-color: #dff0d8;
+          color: #3c763d;
+          border: 1px solid #c3e6cb;
+          padding: 12px;
+          border-radius: 8px;
+          margin-bottom: 20px;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        .login-box input {
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 15px;
+          transition: 0.2s;
+        }
+
+        .login-box input:focus {
+          border-color: #f1c40f;
+          outline: none;
+          box-shadow: 0 0 4px rgba(241, 196, 15, 0.5);
+        }
+
+        .login-box button {
+          width: 100%;
+          padding: 12px;
+          background-color: #f1c40f;
+          color: #000;
+          border: none;
+          border-radius: 8px;
+          font-weight: bold;
+          font-size: 16px;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .login-box button:hover {
+          background-color: #e0b400;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <!-- This message can be controlled using Thymeleaf -->
+    <div class="message" th:if="${param.success}">
+        Welcome, Admin!
+    </div>
+
+    <div class="message" th:if="${param.error}">
+        Invalid credentials. Please try again.
+    </div>
+
+    <div class="message" th:if="${logout}">
+        You have been logged out.
+    </div>
+
+    <h2>Admin Login</h2>
+
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="Enter username" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+</body>
+</html>

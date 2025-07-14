@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td input, td select, td textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<h3>Booking Form</h3>
+
+<h4 th:text="${message}"></h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>From</th>
+            <th>Email</th>
+            <th>To</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Comfort</th>
+            <th>Adults</th>
+            <th>Children</th>
+            <th>Message</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="booking : ${allbookings}">
+            <td th:text="${booking.id}">1</td>
+            <td th:text="${booking.name}"></td>
+            <td th:text="${booking.source}"></td>
+            <td th:text="${booking.email}"></td>
+            <td th:text="${booking.destination}"></td>
+            <td th:text="${booking.time}"></td>
+            <td th:text="${booking.date}"></td>
+            <td th:text="${booking.comfort}"></td>
+            <td class="center" th:text="${booking.adult}"></td>
+            <td class="center" th:text="${booking.children}"></td>
+            <td th:text="${booking.message}"></td>
+            <td>
+                <a th:href="@{/admin/deleteBooking/{id} (id=${booking.id}) }">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

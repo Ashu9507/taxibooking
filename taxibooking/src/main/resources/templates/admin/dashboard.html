@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Taxi Booking Admin Panel</title>
+    <style>
+        /* RESET & BASE */
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: #ffffff;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+      }
+
+      /* GLASS PANEL CONTAINER */
+      .glass-panel {
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          border-radius: 16px;
+          padding: 40px 35px;
+          width: 100%;
+          max-width: 600px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+          text-align: center;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      /* TITLE */
+      .glass-panel h1 {
+          font-size: 28px;
+          margin-bottom: 30px;
+          color: #222;
+          font-weight: bold;
+      }
+
+      /* MESSAGE */
+      .glass-panel h3 {
+          color: #27ae60;
+          margin-bottom: 15px;
+          font-size: 18px;
+      }
+
+      /* NAVIGATION LINKS */
+      .glass-panel a {
+          display: block;
+          text-decoration: none;
+          margin: 12px 0;
+          padding: 12px;
+          background: linear-gradient(135deg, #f9d423, #ff4e00); /* Yellow-orange taxi gradient */
+          color: white;
+          font-weight: bold;
+          border-radius: 10px;
+          transition: transform 0.3s, background 0.3s;
+      }
+
+      .glass-panel a:hover {
+          transform: scale(1.05);
+          background: linear-gradient(135deg, #ffd700, #ff8800);
+      }
+
+      /* LOGOUT LINK DIFFERENT COLOR */
+      .glass-panel a[href="/logout"] {
+          background: #e74c3c;
+      }
+
+      .glass-panel a[href="/logout"]:hover {
+          background: #c0392b;
+      }
+
+
+    </style>
+</head>
+<body>
+<div class="glass-panel">
+    <h3 th:text="${message}"></h3>
+    <h1>WELCOME TO ADMIN PANEL</h1>
+
+    <a href="readAllContacts">Read all Contacts</a>
+    <a href="changeCredentials">Change Credentials</a>
+    <a href="addService">Add Service Details</a>
+    <a href="readAllBookings">Read all bookings</a>
+    <a href="TestimonialFormAdmin">Show all Testimonials</a>
+    <a href="/logout">Logout</a>
+</div>
+</body>
+
+</html>

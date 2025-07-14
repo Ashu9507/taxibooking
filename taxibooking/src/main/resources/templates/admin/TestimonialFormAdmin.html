@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Customer Testimonials</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f4f6f8;
+          margin: 0;
+          padding: 0;
+        }
+
+        .container {
+          max-width: 1000px;
+          margin: 50px auto;
+          background: #fff;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+          text-align: center;
+          margin-bottom: 30px;
+          color: #333;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+
+        th, td {
+          padding: 14px 18px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #007bff;
+          color: #fff;
+          font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+          background-color: #f9f9f9;
+        }
+
+        tr:hover {
+          background-color: #eef7ff;
+        }
+
+        td {
+          color: #333;
+          vertical-align: top;
+        }
+
+        .btn {
+          padding: 6px 12px;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 14px;
+          margin-right: 5px;
+          transition: background 0.3s;
+        }
+
+        .btn-show {
+          background-color: #28a745;
+          color: white;
+        }
+
+        .btn-show:hover {
+          background-color: #218838;
+        }
+
+        .btn-delete {
+          background-color: #dc3545;
+          color: white;
+        }
+
+        .btn-delete:hover {
+          background-color: #c82333;
+        }
+
+        @media (max-width: 768px) {
+          table, thead, tbody, th, td, tr {
+            display: block;
+          }
+
+          thead tr {
+            display: none;
+          }
+
+          tr {
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+          }
+
+          td {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+          }
+
+          td:last-child {
+            border-bottom: none;
+          }
+
+          td::before {
+            content: attr(data-label);
+            font-weight: bold;
+            color: #555;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Customer Testimonials</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Comment</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="testimonial : ${readtestimonialform}">
+            <td data-label="ID" th:text="${testimonial.id}"></td>
+            <td data-label="Name" th:text="${testimonial.name}"></td>
+            <td data-label="Comment" th:text="${testimonial.comment}"></td>
+            <td data-label="Actions">
+                <a th:href="@{/admin/deleteTestimonial/{id}(id=${testimonial.id})}">
+                    <button class="btn btn-delete">Delete</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

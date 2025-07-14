@@ -1,0 +1,151 @@
+/* Base Styling */
+.menu_block {
+  z-index: 999;
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 14px 0;
+}
+
+.menu_block nav {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Top Level Menu */
+.sf-menu {
+  z-index: 990;
+  text-align: center;
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.sf-menu > li {
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  margin: 0 18px;
+}
+
+.sf-menu > li > a {
+  display: block;
+  padding: 12px 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sf-menu > li:hover > a,
+.sf-menu > li.current > a {
+  background-color: #ffc107;
+  color: #000;
+}
+
+/* Arrow Icon for Dropdown */
+.sf-menu > li > a.sf-with-ul:after {
+  content: '▾';
+  margin-left: 6px;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Dropdown Menus (2nd level) */
+.sf-menu li ul {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #3498db;
+  min-width: 200px;
+  padding: 10px 0;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sf-menu li:hover > ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dropdown Items */
+.sf-menu li ul li {
+  display: block;
+  text-align: left;
+  padding: 0;
+}
+
+.sf-menu li ul li a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: background 0.3s;
+}
+
+.sf-menu li ul li a:hover {
+  background-color: #2c80b4;
+  color: #fff;
+}
+
+/* 3rd Level Dropdown */
+.sf-menu li ul ul {
+  left: 100%;
+  top: 0;
+  background-color: #3d454b;
+  padding: 10px 0;
+  min-width: 180px;
+}
+
+.sf-menu li ul ul li a:hover {
+  background-color: #444;
+  color: #ffd700;
+}
+
+/* Responsive - Tablet */
+@media only screen and (max-width: 995px) {
+  .sf-menu > li {
+    margin: 0 12px;
+  }
+
+  .sf-menu li ul ul {
+    left: 155px;
+  }
+}
+
+/* Responsive - Mobile */
+@media only screen and (max-width: 767px) {
+  .menu_block {
+    float: none !important;
+    padding: 20px 10px 25px !important;
+    border: none;
+    min-height: 0;
+  }
+
+  .menu_block nav {
+    float: none !important;
+    font: 14px Arial, sans-serif;
+    text-transform: uppercase;
+    color: #333;
+    margin: 0 auto;
+    padding-left: 0 !important;
+  }
+
+  .sf-menu {
+    display: none !important;
+  }
+
+  #mm0 {
+    font: 14px Arial, sans-serif;
+    width: 100%;
+    margin: 0 auto;
+    float: none;
+    border: 2px solid #ccc;
+    outline: none;
+  }
+}

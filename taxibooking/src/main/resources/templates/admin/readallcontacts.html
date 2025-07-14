@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Read All Contacts - Taxi Admin</title>
+    <style>
+        /* Reset & Base */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #fdfdfd;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 40px 20px;
+          color: #333;
+        }
+
+        h1 {
+          margin-bottom: 10px;
+          font-size: 32px;
+          color: #111;
+        }
+
+        h2 {
+          color: #27ae60;
+          margin-bottom: 20px;
+          font-size: 18px;
+        }
+
+        /* Back Link */
+        .back-link {
+          align-self: flex-start;
+          margin-bottom: 25px;
+        }
+
+        .back-link a {
+          text-decoration: none;
+          background-color: #f1c40f;
+          color: #000;
+          padding: 10px 16px;
+          border-radius: 8px;
+          font-weight: bold;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+          transition: background 0.3s ease;
+        }
+
+        .back-link a:hover {
+          background-color: #e0b400;
+        }
+
+        /* Glass Table Container */
+        .table-container {
+          width: 100%;
+          max-width: 1100px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(12px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+          border-radius: 16px;
+          overflow-x: auto;
+          padding: 30px;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 15px;
+          min-width: 600px;
+        }
+
+        thead {
+          background-color: #f7c948;
+          color: #000;
+        }
+
+        th, td {
+          padding: 14px 16px;
+          text-align: left;
+          border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+          background-color: #fffce0;
+        }
+
+        /* Delete Button */
+        .delete-btn {
+          background-color: #e74c3c;
+          color: white;
+          padding: 8px 12px;
+          border-radius: 6px;
+          font-weight: bold;
+          text-decoration: none;
+          transition: background 0.3s ease;
+        }
+
+        .delete-btn:hover {
+          background-color: #c0392b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .table-container {
+            padding: 20px;
+          }
+
+          table {
+            font-size: 14px;
+          }
+
+          h1 {
+            font-size: 24px;
+          }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Read All Contacts</h1>
+
+<div class="back-link">
+    <a href="dashboard">← Admin Home</a>
+</div>
+
+<h2 th:text="${message}">Messages will show here</h2>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Phone</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contact : ${allcontacts}">
+            <td th:text="${contact.id}">1</td>
+            <td th:text="${contact.name}">John Doe</td>
+            <td th:text="${contact.email}">john@example.com</td>
+            <td th:text="${contact.message}">Sample message</td>
+            <td th:text="${contact.phone}">1234567890</td>
+            <td>
+                <a class="delete-btn" th:href="@{/admin/deleteContact/{id}(id=${contact.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
